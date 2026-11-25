@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>常州 · 主城区数字孪生 CHANGZHOU DIGITAL TWIN</title>
+<link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="labels"></div>
+
+<header class="brand">
+  <button class="seal" id="home" title="回到全景">常</button>
+  <div>
+    <div class="t">常州 <i>·</i> 主城区</div>
+    <div class="s">CHANGZHOU · DIGITAL TWIN</div>
+  </div>
+</header>
+
+<div class="modes" role="tablist">
+  <button class="on" data-mode="orbit">沙盘 <small>ORBIT</small></button>
+  <button data-mode="walk">漫游 <small>WALK</small></button>
+</div>
+
+<div class="stats">
+  <div><b id="st-b">—</b><small>BUILDINGS 楼宇</small></div>
+  <div><b id="st-r">—</b><small>ROAD KM 道路</small></div>
+  <div><b id="st-g">—</b><small>GREEN KM² 绿地</small></div>
+  <div><b id="st-l">—</b><small>LANDMARKS 地标</small></div>
+</div>
+
+<aside class="panel">
+  <div class="cap">LAYERS / 图层</div>
+  <label><input type="checkbox" data-layer="bld" checked><span>建筑体块</span><i></i></label>
+  <label><input type="checkbox" data-layer="roads" checked><span>道路交通</span><i></i></label>
+  <label><input type="checkbox" data-layer="trees" checked><span>城市绿化</span><i></i></label>
+  <label><input type="checkbox" data-layer="traffic" checked><span>动态车流</span><i></i></label>
+  <label><input type="checkbox" data-layer="water" checked><span>河湖水系</span><i></i></label>
+  <label><input type="checkbox" data-layer="landmarks" checked><span>地标建模</span><i></i></label>
+  <label><input type="checkbox" data-layer="labels" checked><span>地标标注</span><i></i></label>
+  <div class="cap">WEATHER / 天气</div>
+  <div class="wx">
+    <button data-w="clear" class="on">晴</button><button data-w="cloudy">阴</button><button data-w="rain">雨</button><button data-w="fog">雾</button><button data-w="snow">雪</button>
+  </div>
+  <div class="cap">LANDMARKS / 地标</div>
+  <div class="lmlist" id="lmlist"></div>
+  <div class="row">
+    <button id="reset">↻ 重置</button><button id="shot">◎ 截图</button>
+  </div>
+  <button id="help" class="wide">? 操作指南</button>
+</aside>
+
+<section class="card" id="card" hidden>
+  <div class="hero" id="c-hero">
+    <span class="tag" id="c-cat"></span><span class="tag r" id="c-dist"></span>
+    <h2 id="c-name"></h2>
+    <div class="en" id="c-en"></div>
+    <button class="x" id="c-close" aria-label="关闭">×</button>
+  </div>
+  <div class="kv" id="c-stats"></div>
+  <p id="c-desc"></p>
+  <ul id="c-pts"></ul>
+  <div class="btns"><button id="c-fly" class="pri">飞抵视角</button><button id="c-walk">第一人称前往</button></div>
+  <div class="foot" id="c-ll"></div>
+</section>
+
+<div class="timebar">
+  <div class="clock"><b id="clock">15:30</b><small id="ampm">下午</small></div>
+  <button id="play" title="播放时间">▶</button>
+  <div class="slider"><input type="range" id="time" min="0" max="24" step="0.01" value="15.5" /><div class="ticks"><span>00</span><span>03</span><span>06</span><span>09</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span></div></div>
+  <div class="wxinfo"><b id="wxlabel">晴 · CLEAR</b><small>常州 · 四月初</small></div>
+  <div class="temp"><b id="temp">+18°</b><small>气温</small></div>
+</div>
+
+<div class="walkhint" id="walkhint" hidden>W/A/S/D 移动 · 拖动鼠标转视角 · Shift 加速 · Space/C 升降 · Esc 退出漫游</div>
+<div class="coords" id="coords"></div>
+<div class="credit">常州数字孪生 · 数据 © OpenStreetMap contributors · 模型 Blender</div>
+
+<div class="help" id="helpbox" hidden>
+  <h3>操作指南</h3>
+  <p><b>沙盘模式</b>：左键拖动平移 · 右键拖动旋转/俯仰 · 滚轮缩放 · 点击地标标签查看详情</p>
+  <p><b>漫游模式</b>：W/A/S/D 移动 · 拖动鼠标转视角 · Shift 加速 · Space 上升 · C 下降 · Esc 返回沙盘</p>
+  <p><b>时间与天气</b>：拖动底部时间轴或点 ▶ 播放一天；左侧切换晴/阴/雨/雾/雪</p>
+  <button id="helpclose">知道了</button>
+</div>
+
+<div id="loading"><div class="seal big">常</div><div class="lt">正在载入常州主城区</div><div class="bar"><i id="lbar"></i></div><div class="ls" id="ltxt">0%</div></div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

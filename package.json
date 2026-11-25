@@ -1,0 +1,13 @@
+{
+  "name": "changzhou-twin",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5190",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5191"
+  },
+  "dependencies": { "three": "0.187.0" },
+  "devDependencies": { "vite": "8.3.6" }
+}

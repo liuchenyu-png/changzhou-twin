@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+
+# build output (regenerate with `npx vite build`)
+dist/
+.vite/
+
+# blender / intermediate build products
+build/
+*.blend1
+
+# logs & local noise
+*.log
+.DS_Store
+Thumbs.db
+
+# local env
+.env
+.env.*

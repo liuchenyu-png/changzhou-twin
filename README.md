@@ -4,6 +4,7 @@
 所有地点按 OpenStreetMap 真实经纬度排布，模型全部在 Blender 里生成/处理。
 
 ## 运行
+- 克隆后先装依赖：`npm install`（依赖只有 `three` 与 `vite`）
 - 开发：`npm run dev` → http://127.0.0.1:5190/
 - 发布包：`npx vite build` → `dist/`（相对路径，可放进任意子目录，例如原站的 `/atlas2/`）
 
